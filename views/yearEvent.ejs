@@ -1,0 +1,76 @@
+<hr class = "hr-dateSection">
+<section id="year">
+    <% var num = 6; %>
+
+    <div class = "year-div row m-0">
+        <% for(let k=0; k<=11; k++){ %>
+            <div class="year-month-div col-lg-3 col-md-6 col-sm-12 ">
+                <p class = "month-name-<%- k %> month-name"></p>
+                <div class = "month-week">
+                    <% for(let i=0; i<=6; i++){ %>
+                        <div class="year-month-col-div">
+                            <% for(let j=0; j<=num; j++){ %>
+                                <% if(j===0){ %>
+                                    <p class="week_name-<%- k %>-<%- i %> light week_name"></p>
+                            <% } %>
+                                <%if(j !==0){ %>
+                                    <p class="date-<%- k %>-<%- i %>-<%- j %> year-date"></p>
+                            <% } %>
+                        <% } %>
+                        </div>
+                 <% } %>
+                </div>
+            </div>
+     <% } %>  
+    </div>    
+    
+</section>
+
+<script>
+    let time = new Date;
+    let y = time.getFullYear();
+    const num = '<%- num%>';
+
+    const monthLong = ["January", "February", "March", "April", "May", "June",
+                            "July", "August", "September", "October", "November", "December"];
+    const dayNameShort = ["S", "M", "T", "W", "T", "F", "S"];
+
+    let time2 = new Date;
+    for(let i=0; i<=11; i++){
+        document.querySelector(".month-name-"+i).innerHTML = monthLong[i];
+    }
+    
+    for(let k=0; k<=11; k++){
+        for(let i=0; i<=6; i++){
+            document.querySelector(".week_name-"+k+"-"+i).innerHTML = dayNameShort[i];
+        }
+    }
+    function onStart(y){
+        document.querySelector(".months-display").innerHTML = y;
+        time2.setFullYear(y);
+        for(let k=0; k<=11; k++){
+            time2.setMonth(k);
+            time2.setDate(1);
+            let cnt = -1*time2.getDay();
+            for(let i=1; i<=num; i++){
+                for(let j=0; j<=6; j++){
+                    let last = new Date(time2.getTime() + (cnt * 24 * 60 * 60 * 1000));
+                    document.querySelector(".date-"+k+"-"+j+"-"+i).innerHTML = last.getDate();
+                    cnt++;
+                }
+            }
+        }
+    }
+    
+    document.querySelector(".less-than").addEventListener("click", function(){
+        onStart(--y);
+    });
+    document.querySelector(".greater-than").addEventListener("click", function(){
+        onStart(++y);
+    });
+    document.querySelector(".nav-today").addEventListener("click", function(){
+        y = time.getFullYear();
+        onStart(y);
+    });
+    onStart(y);
+</script>

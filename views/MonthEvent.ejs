@@ -1,0 +1,142 @@
+<section id="month">
+    <% var num = 4; %>
+    <% if(check) { %>
+        num = 5;
+    <% } %>
+
+    
+<div class="month-div">
+    <% for(let i=0; i<=7; i++){ %>
+        <div class = "month-col-div">
+            <% for(let j=0; j<=num; j++){ %>
+                <% if(i === 0){ %>
+                    <% if(j === 0){ %>
+                        <div class="month-divider-div">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    <%}%>
+                    <% if(j !== 0){ %>
+                        <div class="month-divider-div">
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                        </div>
+                    <% } %>
+                <% } %>
+                <% if(i !== 0){ %>
+                    <% if(j === 0){ %>
+                        <div class="month-week_name-div bold">
+                            <p class="week_name-<%- i-1 %> light"></p>
+                            <p class="date<%= i-1 %>-<%= j %> month-date"></p>
+                            <p class="text-1"></p>
+                            <p class = "text-2"></p>
+                            <p class = "more"></p>
+                        </div>
+                    <% } %>
+                    <%if(j !== 0){ %>
+                        <div class="month-week_name-div bold">
+                            <p class="date<%= i-1 %>-<%= j %> month-date"></p>
+                            <p class="text-1"></p>
+                            <p class="text-2"></p>
+                            <p class = "more"></p>
+                        </div>
+                    <% } %>
+                <% } %>
+            <% } %>
+        </div>
+ <% } %>
+</div>
+</section>
+
+<script>
+
+    let para_target = document.querySelectorAll("p");
+    let sz = para_target.length;
+    let num = Number('<%- num %>');
+    let check = Boolean('<%- check %>');
+    let time = new Date;
+    let d = time.getDate();
+    let day = time.getDay();
+    let m = time.getMonth();
+    let mc = m; //YE COPY IS LIYE BANAYE HAI KYU KI m KO INCREASE YA DECREASE KAR RAHE HAI TOH ISSE TODAY 
+    //WALA BLUE BUG CREATE KAR RAHA HAI.
+    let y = time.getFullYear();
+    const mp = new Map();
+    for(let i=0; i<sz; i++){
+        para_target[i].classList.add("size");
+    }
+
+    const dayNameShort = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const monthLong = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+
+    // TODAY FUNCTION FOR ADDING BLUE HIGHLIGHT.
+    function today(date, month, year, className){
+        
+        if(d === date && month === mc && year === y){
+            document.querySelector("." + className).classList.add("month-highlight"); 
+        }
+        else{
+            document.querySelector("." + className).classList.remove("month-highlight");  
+        }
+    }
+
+    //WEEK NAME SHOW KARNE K LIYE....SUN MON......FRI SAT....
+    for(let i=0; i<=6; i++){
+        document.querySelector(".week_name-" + i).innerHTML = dayNameShort[i];
+    }
+
+    document.querySelectorAll(".month-col-div")[0].classList.remove("month-col-div");
+    
+    //DATE PAGE MAI JANE K LIYE goToDate FUNCTION.
+    function goToDate(key){
+        document.querySelector(".hidden").setAttribute("value", mp.get(key));
+        document.myForm.submit();
+    }
+
+    function onStart(mt){
+        let time2 = new Date;
+        time2.setMonth(mt);
+        time2.setDate(1);
+        let mnth = mt;
+        mnth = ((mnth%12) + 12)%12;
+        document.querySelector(".months-display").innerHTML = monthLong[mnth] + " " + time2.getFullYear();
+        let cnt = -1*time2.getDay();
+        for(let i=0; i<=num; i++){
+            for(let j=0; j<=6; j++){
+                let last = new Date(time2.getTime() + (cnt * 24 * 60 * 60 * 1000));
+                document.querySelector(".date" + j + "-" + i).innerHTML = last.getDate();
+
+                //to check where to mark blue mark.
+                today(last.getDate(), last.getMonth(), last.getFullYear(), "date" + j + "-" + i);
+
+                //for going to specific date.
+                let key = ""+i+""+j;
+                let value = last.getDate()+","+last.getDay()+","+last.getMonth()+","+last.getFullYear();
+                mp.set(key, value);
+                document.querySelector(".date"+j+"-"+i).addEventListener("click", function(){
+                    goToDate(key);
+                })
+
+                cnt++;
+            }
+        }
+    }  
+
+    document.querySelector(".less-than").addEventListener("click", function(){
+        onStart(--m);
+    });
+    document.querySelector(".greater-than").addEventListener("click", function(){
+        onStart(++m);
+    });
+    document.querySelector(".nav-today").addEventListener("click", function(){
+        m = time.getMonth();
+        onStart(m);
+    });
+    onStart(m);
+</script>

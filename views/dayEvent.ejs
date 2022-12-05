@@ -1,0 +1,33 @@
+<section id="time">
+    <div class="time-outterMost-Div">
+        <div class = "time-Inside-Div">
+            <% for(let i=1; i<=11; i++){ %>
+                <p class = "time-para"> <%= i %> AM </p>
+            <% } %>
+            <p class = "time-para">12 PM</p>
+            <% for(let i=1; i<=11; i++){ %>
+                <p class = "time-para"> <%= i %> PM  </p>
+            <% } %>
+        </div>
+        <div class = "time-mid-div">
+            <% for(let j=0; j<=11; j++){ %>
+                <p class="time-mid-Para"></p>
+                <% } %>
+            <p class="time-mid-Para"></p>
+                <% for(let j=1; j<=11; j++){ %>
+                    <p class="time-mid-Para"></p>
+                <% } %>
+        </div>
+        <div class = "time-message-Div">
+            <div class = "time-message-day-Div">
+                <% for(let j=0; j<=11; j++){ %>
+                    <p class="time-message-Para"></p>
+                <% } %>
+            <p class="time-message-Para"></p>
+                <% for(let j=1; j<=11; j++){ %>
+                    <p class="time-message-Para"></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+</section>

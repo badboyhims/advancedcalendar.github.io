@@ -1,0 +1,214 @@
+<hr class = "hr-dateSection">
+<section id="dateSection">
+    <div class="div-date">
+        <div class="div-date-inside1">
+            <p class = "icon-plus"><i class="fa-regular fa-plus"></i></i></p>
+            <p class = "date-7"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p>SUN</p>
+            <p class = "date-0"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p>MON</p>
+            <p class = "date-1"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p>TUE</p>
+            <p class = "date-2"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p>WED</p>
+            <p class = "date-3"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p>THU</p>
+            <p class = "date-4"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p>FRI</p>
+            <p class = "date-5"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p>SAT</p>
+            <p class = "date-6"></p>
+            <p></p>
+        </div>
+    </div>
+    <hr class = "hr-time">
+</section>
+
+<!-- <form action="/Day" name = "myForm" method="post">
+    <input class = "hidden" type="hidden" name = "date">
+</form> -->
+
+<script>
+    var cnt = 0;
+    var date = new Date;
+    var time = new Date;
+    var today = date.getDate();
+    var temp = today;
+    var day = date.getDay();
+    var hrs = time.getHours()- time.getUTCHours();
+    var mins = Math.abs(time.getMinutes() - time.getUTCMinutes());
+    var sign = "";
+    if(hrs>0){
+        sign = "+"
+    }
+
+    document.querySelector(".date-7").innerHTML = "GMT" + sign + hrs + ":" + mins;
+
+    const monthLong = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+    const monthShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", 
+                        "Oct", "Nov", "Dec"];
+
+    function hightlight(){
+        if(cnt !== 0){
+            document.querySelector(".date-" + day).classList.remove("highlight2");
+            document.querySelector(".date-" + day).previousElementSibling.classList.remove("highlight0")
+        }
+        else{
+            document.querySelector(".date-" + day).classList.add("highlight2");
+            document.querySelector(".date-" + day).previousElementSibling.classList.add("highlight0")
+        }
+    }
+
+    function hightlight2(i){
+        document.querySelector(".date-" + i).classList.add("highlight3");
+        document.querySelector(".date-" + i).previousElementSibling.classList.add("highlight1");
+        document.querySelector(".date-" + i).addEventListener("click", function(e){
+            var event = e.target;
+            let str = event.nextElementSibling.classList[0];
+            document.querySelector(".hidden").setAttribute("value", str);
+            document.myForm.submit();
+        })
+    }
+
+    function onStart(){
+        cnt = 0;
+        temp = today;
+        hightlight();
+        var m1 = 13;
+        var m2 = -1;
+        for(let i=0; i<=day; i++){
+            let x = 7*cnt-i;
+            var last = new Date(date.getTime() + (x * 24 * 60 * 60 * 1000));
+            let d = last.getDate();
+            m1 = Math.min(m1,last.getMonth());
+            m2 = Math.max(m2, last.getMonth()); // day-6 k liye aaysa karna padraha hai.
+            var y = last.getFullYear();
+            hightlight2(i);
+            document.querySelector(".date-" + (day-i)).innerHTML = d;
+            document.querySelector(".date-" + (day-i)).nextElementSibling.classList.add(d+","+(day-i)+","+last.getMonth()+","+y);
+        }
+        for(let i=day+1; i<=6; i++){
+            x = 7*cnt+i-day;
+            last = new Date(date.getTime() + (x * 24 * 60 * 60 * 1000));
+            let d = last.getDate();
+            m2 = Math.max(m2, last.getMonth());
+            y = last.getFullYear();
+            hightlight2(i);
+            document.querySelector(".date-" + i).innerHTML = d;
+            document.querySelector(".date-" + i).nextElementSibling.classList.add(d+","+i+","+last.getMonth()+","+y);
+        }
+        month_name(m1, m2, y);
+    }
+
+    function month_name(m1, m2, y){
+        var str = "";
+        if(m1 === m2)
+            str = monthLong[m1] + " " + y;
+        else
+            str = monthShort[m1] + "-" + monthShort[m2] + " " + y;
+        document.querySelector(".months-display").innerHTML = str;
+    }
+
+    onStart();
+    const dateConverter = (dateIn, days, flag) => { 
+        var dates = {};
+        if(flag){   
+            for(let i=0; i<days; i++){
+                let last = new Date(dateIn.getTime() - ((7+i) * 24 * 60 * 60 * 1000));
+                let d = last.getDate();
+                dates[i] = d;
+            }
+        }
+        else{
+            for(let i=days; i<=6; i++){
+                var last = new Date(dateIn.getTime() + ((7+i) * 24 * 60 * 60 * 1000));
+                var d = last.getDate();
+                dates[i] =  d;
+            }
+        }
+        return dates;
+    }
+
+    document.querySelector(".less-than").addEventListener("click", function(){
+        cnt--;
+        hightlight();
+        let dateIn = new Date;
+        var m1 = 13;
+        var m2 = -1;
+        var temp = [];
+        for(let i=0; i<=day; i++){
+            let x = 7*cnt-i;
+            var last = new Date(dateIn.getTime() + (x * 24 * 60 * 60 * 1000));
+            let d = last.getDate();
+            m1 = Math.min(m1,last.getMonth());
+            m2 = Math.max(m2, last.getMonth()); // day-6 k liye aaysa karna padraha hai.
+            var y = last.getFullYear();
+            document.querySelector(".date-" + (day-i)).innerHTML = d;
+            temp.push(d);
+        }
+        for(let i=day+1; i<=6; i++){
+            x = 7*cnt+i-day;
+            last = new Date(dateIn.getTime() + (x * 24 * 60 * 60 * 1000));
+            let d = last.getDate();
+            m2 = Math.max(m2, last.getMonth());
+            y = last.getFullYear();
+            document.querySelector(".date-" + i).innerHTML = d;
+        }
+        month_name(m1, m2, y);
+        // document.querySelector(".hidden").setAttribute("value", temp);
+        // document.querySelector(".myForm").submit();
+    });
+
+    document.querySelector(".greater-than").addEventListener("click", function(){
+        console.log("ok");
+        cnt++;
+        hightlight();
+        let dateIn = new Date;
+        var m1 = 13;
+        var m2 = -1;
+        for(let i=0; i<=day; i++){
+            let x = 7*cnt-i;
+            var last = new Date(dateIn.getTime() + (x * 24 * 60 * 60 * 1000));
+            let d = last.getDate();
+            m1 = Math.min(m1,last.getMonth());
+            m2 = Math.max(m2, last.getMonth()); // day-6 k liye aaysa karna padraha hai.
+            var y = last.getFullYear();
+            document.querySelector(".date-" + (day-i)).innerHTML = d;
+        }
+        for(let i=day+1; i<=6; i++){
+            x = 7*cnt+i-day;
+            last = new Date(dateIn.getTime() + (x * 24 * 60 * 60 * 1000));
+            let d = last.getDate();
+            m2 = Math.max(m2, last.getMonth());
+            y = last.getFullYear();
+            document.querySelector(".date-" + i).innerHTML = d;
+        }
+        month_name(m1, m2, y);
+    });
+
+    document.querySelector(".nav-today").addEventListener("click", function(){
+        onStart();
+    })
+</script>

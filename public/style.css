@@ -1,0 +1,388 @@
+        /*---------------------------- nav bar --------------------------------*/
+
+#nav-bar{
+    position: sticky;
+    top: 0rem;
+    z-index: 2;
+    background-color: white;
+}
+
+p{
+    margin: 0%;
+}
+.navbar{
+    padding-bottom: 0.5rem;
+}
+
+.nav-brand-img{
+    margin-right: 0.8rem;
+}
+.navbar-brand{
+    font-size: 1.3rem;
+}
+
+.nav-i{
+    padding-top: 2px;
+}
+
+.less-than{
+    padding: 1%;
+    border-radius: 100%;
+    color: rgb(0, 0, 0);
+}
+.less-than:hover{
+    border-radius: 100%;
+    padding: 1%;
+    background-color: rgb(242, 242, 242);
+    cursor: pointer;
+}
+
+.greater-than{
+    padding: 1%;
+    border-radius: 100%;
+    color: rgb(0, 0, 0);
+}
+.greater-than:hover{
+    border-radius: 100%;
+    padding: 1%;
+    background-color: rgb(242, 242, 242);
+    cursor: pointer;
+}
+
+.months-display{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+}
+.nav-drp-1{
+    display: inline-block;
+    width: 50%;
+    margin-bottom: 0%;
+}
+
+.nav-drp-2{
+    display: inline-block;
+    width: 50%;
+    text-align: right;
+    margin-bottom: 0%;
+}
+.dropdown{
+    z-index: 1;
+}
+.fa{
+    color: gray;
+    font-size: 1.2rem;
+    position: relative;
+    right: 5px;
+}
+
+        /* ----------------------------- second col -------------------------------*/
+
+#dateSection{
+    padding-top: 1%;
+    position: sticky;
+    top:3.64rem;
+    z-index: 1;
+    background-color: white;
+}
+
+.hr-dateSection{
+    margin: 0%;
+    position: sticky;
+    top: 3.58rem;
+    z-index: 1;
+}
+.div-date{
+    display: flex;
+    width: 100%;
+}
+
+.div-date-inside1{
+    width: 8rem;
+    text-align: center;
+}
+
+.div-date-inside{
+    width: 16rem;
+    text-align: center;
+}
+
+.icon-plus{
+    margin: 3px auto 2px auto;
+    border-radius: 100%;
+    padding: 1%;
+    width: 80%;
+    font-size: 2.3rem;
+    box-shadow: 1px 0px 4px rgb(181, 179, 179);
+    background: linear-gradient(to bottom, #b1caf3 0%, #4285F4 100%);
+    -webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+.icon-plus:hover{
+    box-shadow: 1px 0px 4px rgb(204, 203, 203);
+    cursor: pointer;
+}
+.date-7{
+    font-size: 0.6rem;
+    margin-top: 18%;
+}
+.highlight3{
+    font-size: 1.8rem;
+    border-radius: 100%;
+    width: 32%;
+    padding: 2%;
+    margin: 0 auto 0 auto;
+}
+
+.highlight3:hover{
+    background-color: rgb(213, 213, 213);
+    color: black;
+    margin: 0 auto 0 auto;
+    cursor: pointer;
+}
+
+.highlight2{
+    color: white;
+    border-radius: 100%;
+    background-color: #2c73ee;
+    width: 32%;
+    padding: 2%;
+    margin: 0 auto 0 auto;
+}
+
+.highlight1{
+    font-size: 0.8rem;
+    margin-bottom: 2%;
+}
+
+.highlight0{
+    color: #2c73ee;
+}
+
+/*--------------------------------------------- holiday.ejs -----------------------------------------------*/
+
+/* #time{
+    
+} */
+
+.hr-time{
+    margin: 0%;
+    position: sticky;
+    top:9.85rem;
+    z-index: 1;
+}
+
+.time-outterMost-Div{
+    display: flex;
+}
+
+.time-Inside-Div{
+    width: 4rem;
+    text-align: right;
+}
+
+.time-div{
+    border-bottom: 1px solid rgb(211, 211, 211);
+}
+
+.time-para{
+    font-size: 0.7rem;
+    margin-top: 1.45rem;
+    position: relative;
+    top: 8px;
+    padding-right: 8px;
+}
+
+.time-mid-div{
+    width: 1%;
+}
+
+.time-mid-Para{
+    border-bottom: 1px solid rgb(211, 211, 211);
+    height: 40px;
+}
+.time-message-Div{
+    display: flex;
+    width: 100%;
+}
+
+.time-message-inside-Div{
+    width: 15%;
+}
+
+.time-message-Para{
+    border: 1px solid rgb(211, 211, 211);
+    border-top: 0px;
+    border-right: 0px;
+    border-radius: 2%;
+    font-size: 0.7rem;
+    height: 40px;
+}
+
+
+/*--------------------------------------------- dayName.ejs -----------------------------------------------*/
+
+.highlight0{
+    color: blue;
+}
+
+.day-hilghlight1{
+    font-size: 0.8rem;
+    text-align: left;
+    padding-left: 6%;
+    margin-top: 1%;
+    padding-top: 2%;
+}
+
+.day-highlight2{
+    color: white;
+    border-radius: 100%;
+    background-color: blue;
+    width: 20%;
+    padding: 1%;
+}
+
+.day-hilghtlight3{
+    font-size: 1.8rem;
+    text-align: left;
+    padding-left: 4%;
+}
+
+.div-day-inside1{
+    width: 6rem;
+    text-align: center;
+}
+
+.day-icon-plus{
+    margin: 6px auto 2px auto;
+    border-radius: 100%;
+    padding: 1%;
+    width: 65%;
+    font-size: 2.3rem;
+    box-shadow: 1px 2px 12px rgb(181 179 179);
+}
+.icon-plus:hover{
+    box-shadow: 1px 5px 12px rgb(147, 146, 146);
+    cursor: pointer;
+}
+
+.time-message-day-Div{
+    width: 100%;
+}
+
+
+/*--------------------------------------- monthEvent.ejs -----------------------------------------*/
+
+.month-div{
+    display: flex;
+    height: 100%;
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.month-col-div{
+    width: 100%;
+}
+
+.size{
+    height: 1.44rem;
+}
+
+.bold{
+    font-weight: 700;
+}
+
+.light{
+    color: rgb(155, 155, 155);
+}
+
+.month-divider-div{
+    width: 0.5rem;
+    border-top: 1px solid rgb(211, 211, 211);
+}
+
+.month-week_name-div{
+    border-left: 1px solid rgb(211, 211, 211);
+    border-top: 1px solid rgb(211, 211, 211);
+}
+
+.month-first-inside-div{
+    width: 100%;
+}
+
+.month-last-Div{
+    display: flex;
+}
+
+.month-message-Div{
+    width: 100%;
+}
+
+.month-highlight{
+    background-color: #4285F4;
+    color: white;
+    width: 10%;
+}
+
+.month-highlight:hover{
+    color: black;
+}
+.month-date{
+    border-radius: 100%;
+    margin: 0 auto 0 auto;
+    vertical-align: middle;
+    cursor: pointer;
+    width: 15%;
+    padding: 1%;
+}
+
+.month-date:hover{
+    background-color: rgb(233, 233, 233);
+}
+
+/* -----------------------------------------yearEvent-----------------------------------------------*/
+
+.year-div{
+    padding: 0% 3% 5% 6%;
+}
+
+.year-month-div{
+    padding: 2%;
+}
+.month-name{
+    font-weight: 600;
+    color: rgb(142, 131, 131);
+    margin-bottom: 5%;
+}
+.month-week{
+    display: flex;
+}
+.year-date{
+    border-radius: 100%;
+    margin-top: 7%;
+    width: 67%;
+    padding: 2%;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgb(94, 84, 84);
+    text-align: center;
+}
+
+.year-date:hover{
+    background-color: rgb(225, 225, 225);
+    cursor: pointer;
+    
+}
+
+.year-month-col-div{
+    width: 100%;
+}
+
+.week_name{
+    font-size: 0.75rem;
+    font-weight: 500;
+    border-radius: 100%;
+    width: 67%;
+    text-align: center;
+}
+

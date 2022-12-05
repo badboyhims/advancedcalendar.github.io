@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+    <!-- font-awosome -->
+    <script src="https://kit.fontawesome.com/9967b4b30f.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
+        crossorigin="anonymous"></script>
+    <!-- Nav-bar -->
+    <section id="nav-bar">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <img class = "nav-brand-img"src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAMAAAAL34HQAAAAzFBMVEVChfT////7vAQ0qFMZZ9IYgDjqQzUvfPOsxfn93aD7uACn1LHd5vwbokM1euQAYdmglZI1hqYTfyIsl0obdfM+g/no7/7ziSvpODYfrFTxOjOkfUnsVkvqPCw7gvT86ejv9P6KrvfN2/t5o/ZelPVPjfUydNVymN+swOwAYdEAWc9pkd0AVc/V4fzA0/v2+f6Wt/ihvvlsnPYxikpyp34AeyuxzLYAdRvf6+Lw9/Knr8kAb/IAZ/JzsKzTsnj3hRv3p1sclTnyTkelnHDwAAhRAAAEV0lEQVR4nO3c63KUMBQA4KDUrIr3gFrbCAS01S7sYq2Xrff3fyeBBBZIIKsDSUZzfjgtZYZvTg5JSBDg0AhWUQrUxH13JF69PvMYB9T/5gRArEg1znLP37hvwz1rpc40yapkF2cNa4UUoiQs161doMqVUpWMVbuAkytWSVnuRViyiMq6Ooh1/tYBgWLUASzX9YDqyjqE9eYMRKrb8ADW+Wugqm//E5b7SjnqIJZrWZZlWZZlWZZlWZZlWZZlWZZlWVVgOG88kMchKrKaNT4/lMcBLLhyZo3bd25Iw7Isy7Isy7Isy7IsSykrD9brIDeKFWQFRHXAIgsmDPm6ih5+Oda2s7WNYboZzVlIfIwx8LrHlmJ5cLCr5qNMrMoQ1atgxYDfVIMbkSpq+ApY8U50EuJdMWiTujxrv1uL62jPGrZj5u+TujyraUEMC7KJSNLWPuqhwqT7FsPirIxdzU/j+vYLs9QXnBanvfpbmhWwzVq/2B8rqAAXbTeRR4MXPhZnEVSVDE46PVWY4P7Fg2S4Lb98beXbspxQr2PPqALG9Nd1W244HYCXY5XZiZOkdyCnTdbcizlrVYAiD6lj8bHrnxfUGAxW7CfNrLbn2patCkHg6GWxpsLr5kBOfLjd500Ta0NrKd3fBwEbu3WyMtZvRfyfNLLWbFzcCWaDulihR9iVaTFpZ3kkisqRuplCwEI0Q1XPilF3XgML0Tk6WN1xD420s16WsK70s8pJTWwiC+Cd8BlDA+uaPr22RU+MYLHrZqSZ3MPIHFYZXjMXxXx9aR2qt9SFoVms5iEDcenSy2LPQ/wcQi+Lva6NuXFRM2tLWzEZzm2UsjLOyd7XTvWxvC1CybCxNr5eVtl7wu7DBAtWW7oa0bum10/7V1+z2Tw3/qjKFhtpBuXGFiF8brhW1ohsoOnOsELCDqLe1VWymoWkcmAOmxZsFrgwGKrU3Ylxs3KFd8UqjrMNaJeyuBtBZQdB2ukffcdlv3gacSqFrJyI/6uL319cUs1y8lTkgkno8KF08Nn6w/0CLFqAUM1y4gR1YRgBvtopa0cX71XNIOIohbDaZSqLPiUjqKpLi+roDUqLTmyC9SoiBYmyeGrfThT/5+6rZVmWZVmWZVnWv8XypTG26P7XLLnqBngkjy93Z42v355K4tt38FgeP+7NGi+On03H8clLcCSPJzfnjOcvjm9NxumJ45jHOj15aSCrypV5rDpXxrForkxjsVwZxmpyZRarzZVRrH2uTGJ1cmUQq5src1i9XBnD6ufKFNYgV4awhrkyg8XlyggWnysTWIJcGcAS5Uo/S5gr7SxxrnSzRnKlmTWWq5L1Th9rNFcl6/K9LtZ4rkrW1QdNrIlclayPmhpxKlfVVxblrbgEazJXFeuTtBUXYE3nqv5UprS65mdJckU/LCpzzc6S5Yp9hvXqw2R9zc6S5ar5aO2ny6MJ2dysnzJUw3Kcj1eXo/39zKxf0lw5zm86zAQPSIe1kwAAAABJRU5ErkJggg=="
+                    alt="Logo" width="30" height="32" class="d-inline-block align-text-top">
+                <a class="navbar-brand" href="/">Calender</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+                    <ul class="navbar-nav mb-lg-0 ms-auto">
+                        <li class="nav-item me-4">
+                            <a class="months-display nav-i nav-link"></a>
+                        </li>
+                        <li class="nav-item dropdown me-4">
+                            <a class="nav-i nav-link dropdown-toggle" href="/" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
+                                <%= Period %>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="Day">
+                                        <p class="nav-drp-1">Day</p>
+                                        <p class="nav-drp-2">D</p>
+                                    </a></li>
+                                <li><a class="dropdown-item" href="Week">
+                                        <p class="nav-drp-1">Week</p>
+                                        <p class="nav-drp-2">W</p>
+                                    </a></li>
+                                <li><a class="dropdown-item" href="Month">
+                                        <p class="nav-drp-1">Month</p>
+                                        <p class="nav-drp-2">M</p>
+                                    </a></li>
+                                <li><a class="dropdown-item" href="Year">
+                                        <p class="nav-drp-1">Year</p>
+                                        <p class="nav-drp-2">Y</p>
+                                    </a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#"><i class="fa fa-solid fa-check"></i> Show
+                                        Weakends</a></li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-i nav-item me-1">
+                            <a class="less-than nav-i nav-link"><i class="fa-regular fa-less-than"></i></a>
+                        </li>
+                        <li class="nav-i nav-item me-4">
+                            <a class="greater-than nav-i nav-link"><i class="fa-regular fa-greater-than"></i></a>
+                        </li>
+                    </ul>
+                        <button class="btn btn-outline-success nav-today" type="submit">Today</button>
+                    </form>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <form action="/Day" name = "myForm" method="post">
+        <input class = "hidden" type="hidden" name = "date">
+    </form>
+    <script>
+        
+        document.querySelector("html").addEventListener("keypress", function (e) {
+            var time = new Date;
+            if (e.key === "M" || e.key === "m"){
+                window.location.href = "/Month";
+            }
+            else if (e.key === "W" || e.key === "w"){
+                window.location.href = "/";
+            }
+            else if (e.key === "Y" || e.key === "y"){
+                window.location.href = "/Year";
+            }
+            else if (e.key === "D" || e.key === "d"){
+                let str = time.getDate() + "," + time.getDay() + "," + time.getMonth() + "," + time.getFullYear();
+                document.querySelector(".hidden").setAttribute("value", str);
+                document.myForm.submit();
+            }
+        })
+    </script>
+    <% if(Period === "Week"){ %>
+        <%- include('weekName') %>
+        <%- include('holiday') %>
+        <%- include('footer') %>
+    <% } %>
+    <% if(Period === "Day"){ %>
+        <%- include('dayName') %>
+        <%- include('dayEvent') %>
+        <%- include('footer') %>
+    <% } %>
+    <% if(Period === "Month"){ %>
+        <%- include('MonthEvent') %>
+        <%- include('footer') %>
+    <% } %>
+    <% if(Period === "Year"){ %>
+        <%- include('yearEvent') %>
+        <%- include('footer') %>
+ <% } %>

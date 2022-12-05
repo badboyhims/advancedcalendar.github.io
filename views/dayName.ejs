@@ -1,0 +1,85 @@
+<hr class = "hr-dateSection">
+<section id="dateSection">
+    <div class="div-date">
+        <div class="div-day-inside1">
+            <p class = "day-icon-plus"><i class="fa-regular fa-plus"></i></i></p>
+            <p class = "date-7"></p>
+            <p></p>
+        </div>
+        <div class="div-date-inside">
+            <p class="day-first-para day-hilghlight1"> <%= day %> </p>
+            <p class = "date-0 day-hilghtlight3"> <%= date %> </p>
+            <p></p>
+        </div>
+    </div>
+    <hr class = "hr-time">
+</section>
+
+<script>
+    const dayNameShort = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+    const monthLong = ["January", "February", "March", "April", "May", "June",
+                        "July", "August", "September", "October", "November", "December"];
+    let numd = Number('<%- date %>');
+    let numy = Number('<%- year %>');
+    let numm = Number('<%- month %>');
+    let numday = Number('<%- day %>');
+    var time = new Date;
+    var hrs = time.getHours()- time.getUTCHours();
+    var mins = Math.abs(time.getMinutes() - time.getUTCMinutes());
+    var sign = "";
+    if(hrs>0){
+        sign = "+"
+    }
+    document.querySelector(".date-7").innerHTML = "GMT" + sign + hrs + ":" + mins;
+    
+    function onStart(m, d, y){
+        if(m === time.getMonth() && d === time.getDate() && y === time.getFullYear()){
+            document.querySelector(".date-0").classList.add("day-highlight2");
+            document.querySelector(".day-first-para").classList.add("highlight0");
+        }
+        else{
+            document.querySelector(".date-0").classList.remove("day-highlight2");
+            document.querySelector(".day-first-para").classList.remove("highlight0");
+        }
+    }
+
+    onStart(numm, numd, numy);
+    document.querySelector(".nav-today").addEventListener("click", function(){
+        let m = time.getMonth();
+        let d = time.getDate();
+        let y = time.getFullYear();
+        let day = time.getDay();
+        document.querySelector(".months-display").innerHTML = monthLong[m] + " " + d + ", " + y;
+        document.querySelector(".date-0").innerHTML = d;
+        document.querySelector(".day-first-para").innerHTML = dayNameShort[day];
+        onStart(m, d, y);
+    })
+    document.querySelector(".months-display").innerHTML = monthLong[numm] + " " +numd + ", " + numy;
+    var cnt = numd-time.getDate();
+    document.querySelector(".less-than").addEventListener("click", function(e){
+        cnt--;
+        console.log(cnt);
+        let last = new Date(time.getTime() + (cnt * 24 * 60 * 60 * 1000));
+        let m = last.getMonth();
+        let d = last.getDate();
+        let y = last.getFullYear();
+        let day = last.getDay();
+        onStart(m, d, y);
+        document.querySelector(".date-0").innerHTML = d;
+        document.querySelector(".day-first-para").innerHTML = dayNameShort[day];
+        document.querySelector(".months-display").innerHTML = monthLong[m] + " " + d + ", " + y;
+    })
+
+    document.querySelector(".greater-than").addEventListener("click", function(e){
+        cnt++;
+        let last = new Date(time.getTime() + (cnt * 24 * 60 * 60 * 1000));
+        let m = last.getMonth();
+        let d = last.getDate();
+        let y = last.getFullYear();
+        onStart(m, d, y);
+        let day = last.getDay();
+        document.querySelector(".date-0").innerHTML = d;
+        document.querySelector(".day-first-para").innerHTML = dayNameShort[day];
+        document.querySelector(".months-display").innerHTML = monthLong[m] + " " + d + ", " + y;
+    })
+</script>
